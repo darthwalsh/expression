@@ -1,31 +1,23 @@
+import java.io.*;
+
 public class Test {
-  public static void main(String[] args) {
-    TestConstant();
-    TestSum();
+  public static void main(String[] args) throws Exception {
+    try (BufferedReader reader = new BufferedReader(new FileReader("..\\test.txt"))) {
+      String line = reader.readLine();
+
+      while (line != null) {
+        String e = line;
+        int ans = Integer.parseInt(reader.readLine().substring(1));
+        
+        AreEqual(ans, Parser2.Parse(e).Evaluate());
+        System.out.println(line + " = " + ans);
+
+        reader.readLine();
+        line = reader.readLine();
+      }
+    }
     
     System.out.println("Tests succeeded!");
-  }
-  
-  static void TestConstant() {
-    Constant c = new Constant(5);
-    
-    AreEqual(5, c.n);
-    AreEqual(5, c.Evaluate());
-  }
-  
-  static void TestSum() {
-    Constant c4 = new Constant(4);
-    Constant c5 = new Constant(5);
-
-    Sum s = new Sum(c4, c5);
-    
-    AreEqual(c4, s.e1);
-    AreEqual(c5, s.e2);
-    AreEqual(9, s.Evaluate());
-    
-    Sum s2 = new Sum(s, c5);
-    
-    AreEqual(14, s2.Evaluate());
   }
   
   public static void AreEqual(Object expected, Object actual) {

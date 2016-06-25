@@ -1,3 +1,5 @@
+// Defunct Parser class that's pretty verbose
+
 public class Parser {
   public static Expression Parse(String s) {
     Result r = Helper(s, 0);
@@ -42,23 +44,5 @@ public class Parser {
       this.end = end;
       this.e = e;
     }
-  }
-
-  public static void main(String[] args) {
-    TestParse(0,  "0");
-    TestParse(6,  "+ 2 4");
-    TestParse(14, "+ 2 +5 7");
-    TestParse(24, "++ 3 5+7 9");
-    TestParse(6,  "+++0 1 2 3");
-    
-    TestParse(-4,  "-4");
-    TestParse(2,   "+ -2 4");
-    
-    System.out.println("Tests Succeeded!");
-  } 
-
-  public static void TestParse(int expected, String s) {
-    Expression e = Parse(s);
-    Test.AreEqual(expected, e.Evaluate());
   }
 }

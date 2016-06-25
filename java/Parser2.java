@@ -59,39 +59,4 @@ public class Parser2 {
       this.e = e;
     }
   }
-
-  public static void main(String[] args) {
-    TestParse(0,  "0");
-    TestParse(6,  "+ 2 4");
-    TestParse(14, "+ 2 +5 7");
-    TestParse(24, "++ 3 5+7 9");
-    TestParse(6,  "+++0 1 2 3");
-    
-    TestParse(-4,  "-4");
-    TestParse(2,   "+ -2 4");
-    
-    TestParse(-2,  "- 2 4");
-    TestParse(2,  "- 4 2");
-    TestParse(-2,  "- -4 -2");
-
-    TestParse(8,  "* 2 4");
-
-    TestParse(0,  "/ 2 4");
-    TestParse(1,  "/ 3 2");
-    
-    TestParse(1,  "^ 5 0");
-    TestParse(5,  "^ 5 1");
-    TestParse(25,  "^ 5 2");
-    TestParse(0,  "^ 0 3");
-
-    TestParse(1, "% 5 2");
-    TestParse(0, "% 4 2");
-    
-    System.out.println("Tests Succeeded!");
-  } 
-
-  public static void TestParse(int expected, String s) {
-    Expression e = Parse(s);
-    Test.AreEqual(expected, e.Evaluate());
-  }
 }
