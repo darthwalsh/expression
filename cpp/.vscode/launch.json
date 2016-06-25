@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C++ Launch (GDB)",
+      "type": "cppdbg",
+      "request": "launch",
+      "targetArchitecture": "x64",
+      "program": "${workspaceRoot}/test.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceRoot}",
+      "environment": [],
+      "externalConsole": true
+    }
+  ]
+}
