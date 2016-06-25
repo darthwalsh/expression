@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": ["/usr/include"]
+        },
+        {
+            "name": "Linux",
+            "includePath": ["/usr/include"]
+        },
+        {
+            "name": "Win32",
+            "includePath": [ 
+                "c:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include",
+                "C:/tools/mingw64/x86_64-w64-mingw32/include/c++"
+             ]
+        }
+    ],
+    "clang_format" : {
+        "style" : "file",
+        "fallback-style" : "LLVM",
+        "sort-includes" : false
+    }
+}
