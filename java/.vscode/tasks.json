@@ -8,10 +8,9 @@
  "showOutput": "silent",
 	"problemMatcher": {
 		"owner": "external",
-		"fileLocation": ["absolute"],
 		"pattern": [
 			{
-				"regexp": "^(.+\\.java):(\\d):(?:\\s+(error)):(?:\\s+(.*))$",
+				"regexp": "^(.+\\.java):(\\d+):(?:\\s+(error)):(?:\\s+(.*))$",
 				"file": 1,
 				"location": 2,
 				"severity": 3,

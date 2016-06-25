@@ -8,9 +8,4 @@ public class Constant implements Expression {
   public int Evaluate() {
     return n;
   }
-  
-  @Override
-  public String toString() {
-    return "" + n;
-  }
 }

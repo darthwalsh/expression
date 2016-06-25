@@ -93,7 +93,5 @@ public class Parser2 {
   public static void TestParse(int expected, String s) {
     Expression e = Parse(s);
     Test.AreEqual(expected, e.Evaluate());
-    Expression e2 = Parse(e.toString());
-    Test.AreEqual(expected, e2.Evaluate());
   }
 }

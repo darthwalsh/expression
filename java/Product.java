@@ -6,9 +6,4 @@ public class Product extends BinaryOp {
   public int Evaluate() {
     return e1.Evaluate() * e2.Evaluate();
   }
-  
-  @Override
-  public String Symbol() {
-    return "*";
-  }
 }

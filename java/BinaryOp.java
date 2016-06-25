@@ -10,13 +10,4 @@ public class BinaryOp implements Expression {
   public int Evaluate() {
     throw new UnsupportedOperationException("Can't evaluate a BinaryOp!");
   }
-  
-  public String Symbol() {
-    throw new UnsupportedOperationException("Can't find the symbol of a BinaryOp!");
-  }
-  
-  @Override
-  public String toString() {
-    return Symbol() + " " + e1.toString() + " " + e2.toString();
-  }
 }

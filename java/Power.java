@@ -6,9 +6,4 @@ public class Power extends BinaryOp {
   public int Evaluate() {
     return (int)Math.pow(e1.Evaluate(), e2.Evaluate());
   }
-  
-  @Override
-  public String Symbol() {
-    return "^";
-  }
 }
