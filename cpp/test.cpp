@@ -3,9 +3,7 @@
 #include <string>
 #include <stdlib.h> 
 
-#include "expression.hpp"
-#include "constant.hpp"
-#include "sum.hpp"
+#include "parser.hpp"
 
 using namespace std;
 
@@ -18,13 +16,24 @@ int main() {
 
   ifstream test("..\\test.txt");
   
+  parser p;
   string e;
   string ans;
   while (getline(test, e)) {
     getline(test, ans);
     int expected = atoi(ans.c_str() + 1);
+    expression* exp = p.parse(e);
+    int actual = exp->evaluate();
+    delete exp;
 
-    cout << e << " = " << expected << endl;
+    cout << e;
+    
+    if (expected != actual)
+    {
+      throw invalid_argument("" + expected + " != " + actual);
+    }
+
+    cout << " = " << expected << endl;
     getline(test, e);
   }
 
