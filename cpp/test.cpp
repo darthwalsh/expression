@@ -14,8 +14,11 @@ int main() {
   string e;
   string ans;
   while (getline(test, e)) {
+    cout << e;
+    
     getline(test, ans);
     int expected = atoi(ans.c_str() + 1);
+
     expression* exp = p.parse(e);
     if (exp == NULL)
     {
@@ -26,8 +29,6 @@ int main() {
     int actual = exp->evaluate();
     delete exp;
 
-    cout << e;
-    
     if (expected != actual)
     {
       cerr << " " << expected <<  " != " << actual << endl;

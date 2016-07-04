@@ -32,6 +32,10 @@ expression* parser::helper(sregex_iterator& matches)
     switch(s[0]) {
       case '+': return new sum(left, right);
       case '-': return new difference(left, right);
+      case '*': return new product(left, right);
+      case '/': return new quotient(left, right);
+      case '%': return new modulo(left, right);
+      case '^': return new power(left, right);
       default: throw invalid_argument(s);
     }
   }
