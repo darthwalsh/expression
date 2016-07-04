@@ -8,12 +8,6 @@
 using namespace std;
 
 int main() {
-  constant* c2 = new constant(2);
-  constant* c3 = new constant(3);
-  sum s(c2, c3);
-  cout << s.evaluate() << endl;
-  
-
   ifstream test("..\\test.txt");
   
   parser p;
@@ -23,6 +17,12 @@ int main() {
     getline(test, ans);
     int expected = atoi(ans.c_str() + 1);
     expression* exp = p.parse(e);
+    if (exp == NULL)
+    {
+      cerr << "No parse for \"" << e << '"' << endl;
+      exit(1);
+    }
+
     int actual = exp->evaluate();
     delete exp;
 
@@ -30,7 +30,8 @@ int main() {
     
     if (expected != actual)
     {
-      throw invalid_argument("" + expected + " != " + actual);
+      cerr << " " << expected <<  " != " << actual << endl;
+      exit(1);
     }
 
     cout << " = " << expected << endl;
