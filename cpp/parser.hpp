@@ -3,8 +3,7 @@
 #include <string>
 #include <regex>
 
-#include "constant.hpp"
-#include "sum.hpp"
+#include "expression.hpp"
 
 class parser {
   public: 

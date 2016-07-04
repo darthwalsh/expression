@@ -7,3 +7,9 @@ class sum : public binaryop {
   sum(expression* left, expression* right);
   int evaluate() override;
 };
+
+class difference : public binaryop {
+  public:
+  difference(expression* left, expression* right);
+  int evaluate() override;
+};

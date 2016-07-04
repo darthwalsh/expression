@@ -1,4 +1,6 @@
 #include "parser.hpp"
+#include "constant.hpp"
+#include "math.hpp"
 
 using namespace std;
 
@@ -29,6 +31,7 @@ expression* parser::helper(sregex_iterator& matches)
     expression* right = helper(matches);
     switch(s[0]) {
       case '+': return new sum(left, right);
+      case '-': return new difference(left, right);
       default: throw invalid_argument(s);
     }
   }
