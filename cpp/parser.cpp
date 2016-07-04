@@ -3,44 +3,39 @@
 using namespace std;
 
 parser::parser()
-: ops("-+*/^%"), pattern("-?\\d+|[-+*/^%]")
+: ops("-+*/^%"), pattern("-?\\d+|[-+*/^%]| ")
 { }
-
-struct parser::result {
-  size_t end;
-  expression* e;
-};
 
 expression* parser::parse(const string& s) 
 {
-  smatch matches;
-  if (regex_match(s, matches, pattern))
+  sregex_iterator matches(s.begin(), s.end(), pattern);
+  expression* parse = helper(matches);
+  if (matches == sregex_iterator())
   {
-    result parse = helper(matches, 0);
-    if (parse.end != matches.size())
-    {
-      return parse.e;
-    }
+    return parse;
   }
 
   return NULL;
 }
 
-parser::result parser::helper(smatch matches, size_t i)
+expression* parser::helper(sregex_iterator& matches)
 {
-  const string& s = matches[i].str();
+  while (matches->str() == " ")
+  {
+    ++matches;
+  }
+  const string& s(matches->str());
+  ++matches;
   
   if (ops.find(s) != string::npos)
   {
-    result left = helper(matches, i + 1);
-    result right = helper(matches, left.end);
-    expression* e;
+    expression* left = helper(matches);
+    expression* right = helper(matches);
     switch(s[0]) {
-      case '+': e = new sum(left.e, right.e); break;
+      case '+': return new sum(left, right);
       default: throw invalid_argument(s);
     }
-    return { right.end, e };
   }
   
-  return { i + 1, new constant(stoi(s)) };
+  return new constant(stoi(s));
 }

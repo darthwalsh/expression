@@ -15,6 +15,5 @@ class parser {
   std::string ops;
   std::regex pattern;
 
-  struct result;
-  result helper(std::smatch matches, size_t i);
+  expression* helper(std::sregex_iterator& matches);
 };
