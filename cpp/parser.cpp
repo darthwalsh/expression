@@ -3,7 +3,7 @@
 using namespace std;
 
 parser::parser()
-: ops("-+*/^%"), pattern("-?\\d+|[-+*/^%]| ")
+: ops("-+*/^%"), pattern("-?\\d+|[-+*/^%]")
 { }
 
 expression* parser::parse(const string& s) 
@@ -20,10 +20,6 @@ expression* parser::parse(const string& s)
 
 expression* parser::helper(sregex_iterator& matches)
 {
-  while (matches->str() == " ")
-  {
-    ++matches;
-  }
   const string& s(matches->str());
   ++matches;
   
