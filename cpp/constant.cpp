@@ -4,7 +4,7 @@ constant::constant(int nn)
 : n(nn)
 { }
 
-constant::evaluate()
+int constant::evaluate()
 {
   return n;
 }

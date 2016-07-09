@@ -9,7 +9,7 @@ class binaryop : public expression {
 
   private:
   binaryop(const binaryop& other);
-  operator=(const binaryop& other);
+  binaryop& operator=(const binaryop& other);
 
   protected:
   expression* left;
