@@ -12,3 +12,4 @@ typedef struct expression {
 } expression;
 
 int evaluate(expression* this);
+void delete(expression* this);

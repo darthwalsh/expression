@@ -3,15 +3,13 @@
     "command": "gcc",
     "args": ["-Wall", "*.c", "-g", "-o", "test"],
     "problemMatcher": {
-        "owner": "cpp",
-        "fileLocation": ["relative", "${workspaceRoot}"],
+        "owner": "c",
+        "fileLocation": "absolute",
         "pattern": {
-            "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+            "regexp": "^(.*):(\\d+):\\s+(.*)",
             "file": 1,
             "line": 2,
-            "column": 3,
-            "severity": 4,
-            "message": 5
+            "message": 3
         }
     }
 }

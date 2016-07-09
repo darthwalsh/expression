@@ -9,6 +9,7 @@ typedef struct {
 } binaryop;
 
 void binaryop_ctor(binaryop* this, expression* left, expression* right);
+void binaryop_delete(binaryop* this);
 
 typedef struct {
   binaryop base;

@@ -1,8 +1,10 @@
+#include <stdlib.h>
+
 #include "math.h"
 
 expression_vtable binaryop_table = { 
   0,
-  0
+  (void (*)(expression*))&binaryop_delete
 };
 
 void binaryop_ctor(binaryop* this, expression* left, expression* right) {
@@ -11,8 +13,15 @@ void binaryop_ctor(binaryop* this, expression* left, expression* right) {
   this->right = right;  
 }
 
+void binaryop_delete(binaryop* this) {
+  delete(this->left);
+  delete(this->right);
+  free(this);
+}
+
 expression_vtable sum_table = { 
-  (int (*)(expression*))&sum_evaluate
+  (int (*)(expression*))&sum_evaluate,
+  (void (*)(expression*))&binaryop_delete
 };
 
 void sum_ctor(sum* this, expression* left, expression* right) {
