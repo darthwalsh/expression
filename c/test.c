@@ -9,7 +9,7 @@
 // http://stackoverflow.com/questions/415452/object-orientation-in-c
 // http://stackoverflow.com/questions/351733/can-you-write-object-oriented-code-in-c
 
-int main() {
+int mainTestSum() {
   constant* c1 = malloc(sizeof(constant));
   constant_ctor(c1, 1);
 
@@ -22,4 +22,31 @@ int main() {
   printf("evaluate: %d\r\n", evaluate((expression*)s));
 
   delete((expression*)s);
+  return 0;
+}
+
+int main() {
+  FILE* file = fopen("..\\test.txt", "r");
+
+  char line[256];
+  while(fgets(line, sizeof(line), file)) {
+    printf("%s", line);
+
+    int expected = 0; //TODO
+
+    fgets(line, sizeof(line), file);
+    int actual = atoi(line+1);
+
+    if (actual != expected) {
+      printf("%d != %d", actual, expected);
+      exit(1);
+    }
+    
+    printf("= %d", actual);
+
+    fgets(line, sizeof(line), file);
+  }
+
+  fclose(file);
+  return 0;
 }
