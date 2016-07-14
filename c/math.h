@@ -18,3 +18,9 @@ typedef struct {
 void sum_ctor(sum* this, expression* left, expression* right);
 int sum_evaluate(sum*);
 
+typedef struct {
+  binaryop base;
+} difference;
+
+void difference_ctor(difference* this, expression* left, expression* right);
+int difference_evaluate(difference*);

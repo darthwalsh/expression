@@ -44,13 +44,13 @@ int main() {
       exit(1);
     }
 
-    int expected = evaluate(e);
+    int actual = evaluate(e);
 
     fgets(line, sizeof(line), file);
-    int actual = atoi(line+1);
+    int expected = atoi(line+1);
 
     if (actual != expected) {
-      printf("%d != %d\r\n", actual, expected);
+      printf("actual %d != expected %d\r\n", actual, expected);
       exit(1);
     }
     

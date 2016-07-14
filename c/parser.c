@@ -9,16 +9,31 @@ expression* parseHelper(char** ps) {
     ++(*ps);
   }
 
-  char current = **ps;
+  char* s = *ps;
+  char current = *s;
   
-  switch (current) {
-    case '+': ;
-      ++(*ps);
-      expression* left = parseHelper(ps);
-      expression* right = parseHelper(ps);
-      sum* s = malloc(sizeof(sum));
-      sum_ctor(s, left, right);
-      return (expression*)s;
+  // Avoid parsing negative number as a subtraction
+  if (!(current == '-' && s[1] != ' ')) {
+    switch (current) {
+      case '+':
+      case '-':  
+        ++(*ps);
+        expression* left = parseHelper(ps);
+        expression* right = parseHelper(ps);
+
+        switch (current) {
+          case '+': {
+            sum* s = malloc(sizeof(sum));
+            sum_ctor(s, left, right);
+            return (expression*)s;
+          }
+          case '-': {
+            difference* d = malloc(sizeof(difference));
+            difference_ctor(d, left, right);
+            return (expression*)d;
+          }
+        }
+    }
   }
 
   constant* c = malloc(sizeof(constant));
