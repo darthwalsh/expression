@@ -17,11 +17,25 @@ Sum.prototype.evaluate = function() {
   return this.left.evaluate() + this.right.evaluate();
 }
 
-var c = new Constant(2);
-console.log(c.evaluate());
+fs = require('fs')
+fs.readFile('..\\test.txt', 'utf8', function (err,data) {
+  if (err) {
+    return console.log(err);
+  }
+  var lines = data.split('\r\n');
+  for (var i = 0; i < lines.length; i += 3) {
+    var line = lines[i];
+    console.log(line);
 
-var s = new Sum(c, c);
-console.log(s.evaluate());
+    var expected = +lines[i+1].substring(1);
 
-s = new Sum(s, c);
-console.log(s.evaluate());
+    var actual = expected; //TODO
+
+    if (expected !== actual) {
+      console.log("expected: " + expected + " != actual: " + actual);
+      return;
+    }
+
+    console.log('= ' + expected);
+  }
+});
