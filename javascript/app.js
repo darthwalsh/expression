@@ -1,23 +1,9 @@
-var Constant = function(n) {
-  this.n = n;
-}
-Constant.prototype.evaluate = function() {
-  return this.n;
-}
+var fs = require('fs');
+var math = require("./math.js");
+var parser = require("./parser.js");
 
-var Binary = function (left, right) {
-  this.left = left;
-  this.right = right;
-}
+console.log(new math.Constant(2).evaluate());
 
-var Sum = function (left, right) {
-  Binary.call(this, left, right);
-}
-Sum.prototype.evaluate = function() {
-  return this.left.evaluate() + this.right.evaluate();
-}
-
-fs = require('fs')
 fs.readFile('..\\test.txt', 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
@@ -29,7 +15,8 @@ fs.readFile('..\\test.txt', 'utf8', function (err,data) {
 
     var expected = +lines[i+1].substring(1);
 
-    var actual = expected; //TODO
+    var e = parser.parse(line);
+    var actual = e.evaluate();
 
     if (expected !== actual) {
       console.log("expected: " + expected + " != actual: " + actual);
