@@ -16,21 +16,45 @@ expression* parseHelper(char** ps) {
   if (!(current == '-' && s[1] != ' ')) {
     switch (current) {
       case '+':
-      case '-':  
+      case '-':
+      case '*':
+      case '/':
+      case '%':
+      case '^':
         ++(*ps);
         expression* left = parseHelper(ps);
         expression* right = parseHelper(ps);
 
         switch (current) {
           case '+': {
-            sum* s = malloc(sizeof(sum));
-            sum_ctor(s, left, right);
-            return (expression*)s;
+            sum* e = malloc(sizeof(sum));
+            sum_ctor(e, left, right);
+            return (expression*)e;
           }
           case '-': {
-            difference* d = malloc(sizeof(difference));
-            difference_ctor(d, left, right);
-            return (expression*)d;
+            difference* e = malloc(sizeof(difference));
+            difference_ctor(e, left, right);
+            return (expression*)e;
+          }
+          case '*': {
+            product* e = malloc(sizeof(product));
+            product_ctor(e, left, right);
+            return (expression*)e;
+          }
+          case '/': {
+            quotient* e = malloc(sizeof(quotient));
+            quotient_ctor(e, left, right);
+            return (expression*)e;
+          }
+          case '%': {
+            modulo* e = malloc(sizeof(modulo));
+            modulo_ctor(e, left, right);
+            return (expression*)e;
+          }
+          case '^': {
+            power* e = malloc(sizeof(power));
+            power_ctor(e, left, right);
+            return (expression*)e;
           }
         }
     }
