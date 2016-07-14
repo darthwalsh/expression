@@ -1,9 +1,11 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "expression.h"
 #include "constant.h"
 #include "math.h"
+#include "parser.h"
 
 // http://stackoverflow.com/questions/3113583/how-could-one-implement-c-virtual-functions-in-c
 // http://stackoverflow.com/questions/415452/object-orientation-in-c
@@ -30,19 +32,29 @@ int main() {
 
   char line[256];
   while(fgets(line, sizeof(line), file)) {
-    printf("%s", line);
+    size_t length = strlen(line);
+    if (*line && line[length - 1] == '\n') {
+      line[length - 1] = '\0';
+    }
+    printf("%s   ", line);
 
-    int expected = 0; //TODO
+    expression* e = parse(line);
+    if (e == NULL) {
+      printf("Couldn't parse\r\n");
+      exit(1);
+    }
+
+    int expected = evaluate(e);
 
     fgets(line, sizeof(line), file);
     int actual = atoi(line+1);
 
     if (actual != expected) {
-      printf("%d != %d", actual, expected);
+      printf("%d != %d\r\n", actual, expected);
       exit(1);
     }
     
-    printf("= %d", actual);
+    printf("= %d\r\n", actual);
 
     fgets(line, sizeof(line), file);
   }
