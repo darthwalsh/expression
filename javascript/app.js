@@ -5,11 +5,14 @@ Constant.prototype.evaluate = function() {
   return this.n;
 }
 
-var Sum = function (left, right) {
+var Binary = function (left, right) {
   this.left = left;
   this.right = right;
 }
 
+var Sum = function (left, right) {
+  Binary.call(this, left, right);
+}
 Sum.prototype.evaluate = function() {
   return this.left.evaluate() + this.right.evaluate();
 }
