@@ -2,8 +2,6 @@ var fs = require('fs');
 var math = require("./math.js");
 var parser = require("./parser.js");
 
-console.log(new math.Constant(2).evaluate());
-
 fs.readFile('..\\test.txt', 'utf8', function (err,data) {
   if (err) {
     return console.log(err);

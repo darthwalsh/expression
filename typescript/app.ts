@@ -1,14 +1,10 @@
 /// <reference path="maths.ts" />
+/// <reference path="parser.ts" />
 
 declare var require: any;
-
-console.log(new Maths.Sum(
-  new Maths.Constant(3), 
-  new Maths.Constant(2)).evaluate());
-
 var fs = require("fs");
 
-fs.readFile('..\\test.txt', 'utf8', function (err,data) {
+fs.readFile('..\\test.txt', 'utf8', (err,data) => {
   if (err) {
     return console.log(err);
   }
@@ -19,8 +15,8 @@ fs.readFile('..\\test.txt', 'utf8', function (err,data) {
 
     var expected = +lines[i+1].substring(1);
 
-    //TODO var e = parser.parse(line);
-    var actual = 2 //TODO e.evaluate();
+    var e = Parser.parse(line);
+    var actual = e.evaluate();
 
     if (expected !== actual) {
       console.log("expected: " + expected + " != actual: " + actual);
