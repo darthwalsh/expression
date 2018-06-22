@@ -1,0 +1,25 @@
+To test the calculator:
+Open the text file "test.txt" in the parent folder.
+Splitting the file by line, do this for every group of three lines:
+  Parse and evaluate the first line.
+  That's expected to be the same as whatever's after the first char of the second line.
+  If they're different, output an error and quit.
+
+To Parse a line:
+  Reading in as many as characters a possible, produce an expression tree from 
+    If there are one or more characters 0 to 9 (optionally preceded by a negative symbol),
+      Constants Expression, from parsing the digits as an integer
+    If there are one of the arithmatic operators + - * / ^ %
+      Binary Expression, parsing the left expression then the right expression.
+  If there are still symbols left over, there was a problem parsing.
+
+To Evaluate an expression:
+  A Constant Expression evaluates to the number it was created with.
+  A Binary Expression evalutes by evaluating the left and the right side, then for:
+    + take the sum
+    - take the difference
+    * take the product
+    / take the quotient
+    ^ take the power
+    % take the modulo
+

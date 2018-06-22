@@ -2,7 +2,9 @@
 
 Implementations of a simple calculator app using different programming languages.
 
-For more details for how the programs works, look in the [pseudocode] folder.
+For more details for how a program is expected to work, look at [pseudocode/logic].
+
+For running test cases or writing code, Visual Studio Code has build/test rules set up.
 
 ## Language
 
