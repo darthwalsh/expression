@@ -7,7 +7,7 @@ namespace Math
     {
         static void Main(string[] args)
         {
-            var lines = File.ReadAllLines("..\\test.txt");
+            var lines = File.ReadAllLines(Path.Join("..", "test.txt"));
             for (var i = 0; i < lines.Length; i += 3) {
                 var line = lines[i];
                 var actual = -1; //TODO
