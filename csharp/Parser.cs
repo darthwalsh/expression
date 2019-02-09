@@ -32,6 +32,11 @@ namespace Math
 
                 switch(s) {
                     case "+": return (new Sum(x, y), end);
+                    case "-": return (new Difference(x, y), end);
+                    case "*": return (new Product(x, y), end);
+                    case "/": return (new Quotient(x, y), end);
+                    case "^": return (new Power(x, y), end);
+                    case "%": return (new Modulo(x, y), end);
                     default: throw new InvalidOperationException($"Unknown op {s}");
                 }
             }
